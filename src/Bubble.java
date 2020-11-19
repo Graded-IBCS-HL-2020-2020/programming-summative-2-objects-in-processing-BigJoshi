@@ -28,11 +28,34 @@ class Bubble {
      * SUMMATIVE OPTIONAL Add more than two constructors for varying levels of
      * customization
      */
+  public Bubble(Sketch sketch) {
+    s = sketch;
+    diameter = s.random(50, 100);
+    x = s.random(diameter / 2, s.width - diameter / 2);
+    y = s.random(diameter / 2, s.height - diameter / 2);
+    col = s.color(255, 0);
+    borderColor = s.randomColor(false);
+    speedX = s.random(-10, -20);
+    speedY = s.random(-10, -20);
+  }
 
+  public Bubble(Sketch sketch, float sx, float sy, float bubbleDiameter) {
+    s = sketch;
+    speedX = sx;
+    speedY = sy;
+    diameter = bubbleDiameter;
+    col = s.color(255, 0);
+    x = s.random(diameter / 2, s.width - diameter / 2);
+    y = s.random(diameter / 2, s.height - diameter / 2);
+    borderColor = s.randomColor(false);
+  }
     /*
      * SUMMATIVE REQUIRED Add a method called `getRadius()` that returns a float
      * representing the radius of the bubble
      */
+public float getRadius(){
+    return diameter / 2;
+  }
 
     /** Draws the bubble. */
     public void drawBubble() {
@@ -52,8 +75,12 @@ class Bubble {
         /* SUMMATIVE OPTIONAL Tweak bubble movement so that it moves more randomly */
 
         /* If the bubble is on the left or right edge, bounce! */
-        if (x > (s.width - getRadius()) || x < getRadius()) {
-            speedX = -speedX;
+        if (x > (s.width + getRadius()) ) {
+          x = 0 - getRadius ();
+        }
+
+        if (x < (0 - getRadius()) ) {
+          x = s.width + getRadius();
         }
         /* If the ball goes off the top, move it to the bottom. */
         if (y < (-getRadius())) {

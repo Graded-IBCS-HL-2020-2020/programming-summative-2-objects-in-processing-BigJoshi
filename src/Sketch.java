@@ -12,10 +12,10 @@ public class Sketch extends PApplet {
      * variables.
      */
 
-    private Ball b1;
-    private Ball b2;
-    private Ball b3;
-    private Ball b4;
+     Ball[] balls;
+     Bubble[] bubbles;
+     Snowflake[] snowflakes;
+
 
   
    public void settings() {
@@ -31,10 +31,13 @@ public class Sketch extends PApplet {
      */
     public void setup() {
         frameRate(30);
-        b1 = new Ball(this);
-        b2 = new Ball(this);
-        b3 = new Ball(this);
-        b4 = new Ball(this);
+        balls = new Ball[]{new Ball(this), new Ball(this, 300, 100, 30, 10, 15, 15), new Ball(this), new Ball(this)};
+
+        bubbles = new Bubble[]{new Bubble(this), new Bubble(this, 30, 20, 20), new Bubble(this), new Bubble(this)};
+
+        snowflakes = new Snowflake[]{new Snowflake(this), new Snowflake(this, 75, 50, 10, 40, 20), new Snowflake(this), new Snowflake(this)};
+        
+       
 
     }
 
@@ -42,14 +45,30 @@ public class Sketch extends PApplet {
         background(100);
 
         /* SUMMATIVE REQUIRED Draw and move all balls, snowflakes, and bubbles */
-        b1.drawBall();
-        b1.moveBall();
-        b2.drawBall();
-        b2.moveBall();
-        b3.drawBall();
-        b3.moveBall();
-        b4.drawBall();
-        b4.moveBall();
+        balls[0].drawBall();
+        balls[0].moveBall();
+        balls[1].drawBall();
+        balls[1].moveBall();
+        balls[2].drawBall();
+        balls[2].moveBall();
+        balls[3].drawBall();
+        balls[3].moveBall();
+        bubbles[0].drawBubble();
+        bubbles[0].moveBubble();
+        bubbles[1].drawBubble();
+        bubbles[1].moveBubble();
+        bubbles[2].drawBubble();
+        bubbles[2].moveBubble();
+        bubbles[3].drawBubble();
+        bubbles[3].moveBubble();
+        snowflakes[0].drawSnowflake();
+        snowflakes[0].moveSnowflake();
+        snowflakes[1].drawSnowflake();
+        snowflakes[1].moveSnowflake();
+        snowflakes[2].drawSnowflake();
+        snowflakes[2].moveSnowflake();
+        snowflakes[3].drawSnowflake();
+        snowflakes[3].moveSnowflake();
     }
 
     /**
@@ -76,6 +95,19 @@ public class Sketch extends PApplet {
      * stops? (this is a major challenge - you can use the variables mouseX and
      * mouseY to see where the mouse was clicked.)
      */
+    public void mousePressed() {
+      balls[0].stop();
+      balls[1].stop();
+      balls[2].stop();
+      balls[3].stop();
+    }
+
+    public void mouseReleased() {
+      balls[0].start();
+      balls[1].start();
+      balls[2].start();
+      balls[3].start();
+    }
 
     public static void main(String[] args) {
         PApplet.main("Sketch");
