@@ -12,6 +12,8 @@ class Ball {
      * The default constructor generates random values for most of the instance
      * variables.
      */
+
+  
     public Ball(Sketch sketch) {
         s = sketch;
         diameter = s.random(50, 150); // random diameter between 50 and 150
